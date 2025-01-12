@@ -22,7 +22,7 @@ The action space of HierarchyCraft environments consists of sub-tasks, referred 
 This concept is visually represented by the *Requirements graph* depicting the hierarchical relationships within each HierarchyCraft environment.
 The *Requirements graph* is directly constructed from the list of *Transformations* composing the environement.
 
-![](docs/images/TransformationToRequirementsLarge.png)
+![](docs/images/TransformationToRequirements.png)
 
 More details about requirements graph can be found in the documentation at [`hcraft.requirements`](https://irll.github.io/HierarchyCraft/hcraft/requirements.html) and example of requirements graph for some HierarchyCraft environements can be found in [`hcraft.examples`](https://irll.github.io/HierarchyCraft/hcraft/examples.html).
 

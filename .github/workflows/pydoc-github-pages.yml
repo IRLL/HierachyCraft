@@ -19,26 +19,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-    - uses: actions/checkout@v2
-    - name: Install uv
-      uses: astral-sh/setup-uv@v5
-    - name: Set up venv with Python ${{ matrix.python-version }}
-      run: |
-        uv venv --python ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        uv sync --extra docs --extra gym --extra gui --extra planning --extra htmlvis
-    - name: Make documentation
-    - run: |
-        uv run pdoc -d google -t docs/template --logo https://irll.net/irll-logo.png --logo-link https://irll.github.io/HierarchyCraft/hcraft.html -o docs/build --math --no-search hcraft
-    - name: Upload static documentation artifact
-      - uses: actions/upload-pages-artifact@v1
-        with:
-          path: docs/build
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Set up venv with Python ${{ matrix.python-version }}
+        run: |
+          uv venv --python ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          uv sync --extra docs --extra gym --extra gui --extra planning --extra htmlvis
+      - name: Make documentation
+      - run: |
+          uv run pdoc -d google -t docs/template --logo https://irll.net/irll-logo.png --logo-link https://irll.github.io/HierarchyCraft/hcraft.html -o docs/build --math --no-search hcraft
+      - name: Upload static documentation artifact
+        - uses: actions/upload-pages-artifact@v1
+          with:
+            path: docs/build
 
   # Deploy the artifact to GitHub pages.
   # This is a separate job so that only actions/deploy-pages has the necessary permissions.
